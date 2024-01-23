@@ -22,7 +22,8 @@ P_i       = [];                                                  % investor bid 
 vacancies = []; % initialize vacancies
 
 R   = WTP ;
-P_o = R(:)./((delta+tau_prop).*(1-tau_o(:))+ gam + rp_o(:) - g_o(:)) ; % with expected capital gains g_o
+%P_o = R(:)./((delta+tau_prop).*(1-tau_o(:))+ gam + rp_o(:) - g_o(:)) ; % with expected capital gains g_o
+P_o = R(:)./((.06+tau_prop).*(1-tau_o(:))+ gam + rp_o(:) - g_o(:)) ;
 % X.Ouc(:,M.time)  = ((delta+tau_prop).*(1-tau_o(:))+ gam + rp_o(:) - g_o(:));
 
 % Investor bids and market share
@@ -33,8 +34,8 @@ X.index_sorted_agents_by_po{M.time}    = index;
 % loop over investor owning properties 
 for i = 1:n
     P_bid = owner_info(i,1)+epsilon;
-    R_i   = (P_bid)*((delta+tau_prop)*(1-tau_c)+ gam + rp_I - g_I)+m; % with expected capital gains g_I
-    
+    %R_i   = (P_bid)*((delta+tau_prop)*(1-tau_c)+ gam + rp_I - g_I)+m; % with expected capital gains g_I
+    R_i   = (P_bid)*((.06+tau_prop)*(1-tau_c)+ gam + rp_I - g_I)+m;
     if R_i <0
         R_i = 1;
     end
