@@ -21,7 +21,7 @@ else
     beta_x          = 0.45; 
 end
 
-rcov                = 0.9; % covariance on income and willingness to pay distributions   
+rcov                = 0*0.7; % covariance on income and willingness to pay distributions   
 [tau_o,WTP_base,rp_base,WTP_alph] = agent_distribution(... % generate wtp/income/risk prem distributions
     rcov,range_WTP_base,range_WTP_alph,range_tau_o,range_rp_base,beta_x,n,distribution_peakiness); 
 
@@ -32,7 +32,7 @@ gam               = 0.01;             % depreciation rate on housing capital (sa
 epsilon           = 1;                % additional bid for investor
 tau_prop          = 0.01*ones(T+5,1); % base property tax rate (same for investor and owner)
 tau_c             = 0.22;              % corporate tax rate (just investors) -- U.S. federal rate (could add 2.5% for NC)
-m                 = 2000;             % additional investor-only fees of renting the property (just investors)
+m                 = 1.0*2000;             % additional investor-only fees of renting the property (just investors)
 
 rp_I     = zeros(1);                  % average risk premium real estate (same for investor and owner)
 rp_o     = zeros(n,1);                % average risk premium real estate (same for investor and owner)
@@ -44,7 +44,7 @@ mkt      = zeros(T,1);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % agent flux parameters 
-adjust_beta_x                 = 2e-7; 
+adjust_beta_x                 = 2e-6; 
 if isfield(run_option,'agent_flux_sensitivity_param')
 agent_flux_sensitivity_param  = run_option.agent_flux_sensitivity_param;
 else
