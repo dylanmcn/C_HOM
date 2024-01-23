@@ -1,4 +1,4 @@
-function [A,X,SV] = agent_distribution_adjust(ACOM,A,X,M,SV,OF,MMT);
+function [A,X,SV] = agent_distribution_adjust(ACOM,A,X,M,SV,OF,MMT,burn);
 % OF = 1 ;
 % X  = X_OF;
 % A=A_OF;
@@ -32,7 +32,11 @@ end
 
 W         = 1./(1+ A.agent_flux_sensitivity_param*(price(t)-P_e(t)).^2);
 
-beta_x    = beta_x + W*switching_speed*(price(t) - P_e(t)) +(1-W)* switching_speed*(P_e(t) - price(t));
+if(burn)
+    beta_x    = beta_x + W*switching_speed*(price(t) - P_e(t)) +(1-W)* switching_speed*(P_e(t) - price(t));
+else
+    beta_x = beta_x;
+end
 
 if beta_x>1     % newly added 4/28
     beta_x=1;
