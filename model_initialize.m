@@ -53,11 +53,11 @@ nourish_plan_horizon = 30;               % nourishment commitment length (commit
 Ddepth               = 20;               % toe depth
 horizon              = [];               % discounting time horizon (50 yrs) for nourishment benefits-cost
 Tfinal               = T-horizon;        %
-x0                   = 50;               % nourish beach width community
+x0                   = 70;               % nourish beach width community
 delta_disc           = 0.06;             % discount rate
 pay_years_ahead      = 10;
 barr_elev            = 1;                % barrier elevation above mean sea level
-h0                   = 4;                % nourish dune height
+h0                   = 4/2;                % nourish dune height
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 n_NOF                = round(n*(1-share_OF));   % number of nonoceanfront agents/units
 n_OF                 = round(n*(share_OF));     % number of nonoceanfront agents/units

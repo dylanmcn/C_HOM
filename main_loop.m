@@ -3,6 +3,9 @@ price_flag=0;
 
 for t = 2: run_option_main.time
     t
+    if( t == 810)
+        MMT.nourish_subsidy = 0.5;
+    end
     if price_flag==0
         M.time = t;
         
@@ -51,12 +54,14 @@ for t = 2: run_option_main.time
             M,X_OF,X_OF.WTP{t},A_OF.tau_prop(t),SV_OF);
         
 %         if parm(2)==1
+if(1)%Flux
             [A_NOF,X_NOF,SV_NOF] = ...
                 agent_distribution_adjust(...
-                ACOM,A_NOF,X_NOF,M,SV_NOF,0,MMT);
+                ACOM,A_NOF,X_NOF,M,SV_NOF,0,MMT,1);
             [A_OF,X_OF,SV_OF] = ...
                 agent_distribution_adjust(...
-                ACOM,A_OF,X_OF,M,SV_OF,1,MMT);
+                ACOM,A_OF,X_OF,M,SV_OF,1,MMT,1);
+end
 %         end
         
         [ACOM] = ...

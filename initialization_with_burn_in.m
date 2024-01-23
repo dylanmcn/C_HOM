@@ -72,8 +72,8 @@ for t = 2 : run_option_init.time
     [X_OF]               = calculate_user_cost(M,X_OF,X_OF.WTP{t},A_OF.tau_prop(t));
     
     % change agent distributions in response to new price
-    [A_NOF,X_NOF,SV_NOF] = agent_distribution_adjust(ACOM,A_NOF,X_NOF,M,SV_NOF,0,MMT);
-    [A_OF,X_OF,SV_OF]    = agent_distribution_adjust(ACOM,A_OF,X_OF,M,SV_OF,1,MMT);
+    [A_NOF,X_NOF,SV_NOF] = agent_distribution_adjust(ACOM,A_NOF,X_NOF,M,SV_NOF,0,MMT,1);
+    [A_OF,X_OF,SV_OF]    = agent_distribution_adjust(ACOM,A_OF,X_OF,M,SV_OF,1,MMT,1);
     
     % assign agent indicators for homeowners (for voting)
     [ACOM]               = agent_assign_properties(ACOM,X_OF,X_NOF,M);
@@ -123,10 +123,12 @@ hold on
 plot([1:run_option_init.time],X_NOF.price(1:run_option_init.time),'r')
 plot([1:run_option_init.time],X_OF.P_e(1:run_option_init.time),'k','linewidth',1)
 plot([1:run_option_init.time],X_NOF.P_e(1:run_option_init.time),'k','linewidth',1)
-legend('NOF','OF','P_e OF','P_e NOF')
-xlim([1 run_option_init.time]); xlabel('time')
-ylabel('price')
-title('model initialization')
+legend('OF','NOF','P_e OF','P_e NOF')
+xlim([1 run_option_init.time]); xlabel('Time','FontSize',15)
+ylabel('Property Value','FontSize',15)
+%title('Flux parameter = 0.1 x Baseline Value','FontSize',15)
+title('model initialization','FontSize',15)
+
 
 subplot(223)
 MMT.newplan(MMT.newplan==0)=NaN;
@@ -157,6 +159,7 @@ ylabel('NOF \beta_x')
 xlabel('time')
 ylim([0 1])
 pause(0.1)
+
 
 X_OFinit  = X_OF;
 X_NOFinit = X_NOF;
