@@ -39,6 +39,8 @@ WTP_base = X(:,2);
 WTP_alph = X(:,3);
 rp_base  = 1-X(:,4); % rp is currently fixed and while correlated with WTP/tau_inc, does not adjust with the outside market
 
+%rp_base = emprand(rp_base,numel(rp_base),1);%For Marty run to destroy risk correlation with income
+
 % rescale to property intervals
 tau_o=tau_o*(range_tau_o(2)-range_tau_o(1));
 tau_o=tau_o+range_tau_o(1);
